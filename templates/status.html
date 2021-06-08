@@ -1,0 +1,197 @@
+<!DOCTYPOE html>
+<html lang= "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Status</title>
+        <link href="{{url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{url_for('static', filename= 'css/status_styling.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <style>
+            #deviceSize{
+                margin-bottom: 30px;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="header">
+                <div id="pghead">
+                    Virtual Police Station
+                </div>
+                <div id="searchbox">
+                    <form method="get">
+                        <input id="search" type="text">
+                        <input id="submit" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a>
+                        <ul>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Initiatives</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Citizen Corner</a>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Sign up</a></li>
+                            <li><a href="#">Report</a></li>
+                            <li><a href="#">Permission</a></li>
+                            <li><a href="#">Passport Status</a></li>
+                            <li><a href="#">DCP Visit</a>
+                            </li>
+                            <li><a href="#">Right Information</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Police corner</a>
+                        <ul>
+                            <li><a href="#">Police Meetings</a></li>
+                            <li><a href="#">Case Details</a></li>
+                            <li><a href="#">Good Work</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact us</a>
+                        <ul>
+                            <li><a href="#">Emergency Contact</a></li>
+                            <li><a href="#">Police station in charge</a></li>
+                        </ul>
+                    </li>
+                    <li id="lilast"><a href="#">Status</a></li>
+                </ul>
+            </div>
+            <div class="container-fluid" >
+                <div class="jumbotron" id="jum">
+                    Status of your Complaint 1. Please feel free to contact us!
+                </div>
+            </div>
+            
+            <div class="container-fluid px-5 py-5">
+
+                <div class="row">
+
+                    <div class="col mx-1 status" id="online_form">
+                        <img src="{{ url_for('static', filename='images/online_form.png')}}" class="img">
+                        <h2>Online form is submitted</h2>
+                        <p>Your form has reached us. We will soon get back to you.</p>
+                    </div>
+
+                    <div class="col mx-1 status" id="view">
+                        <img src="{{ url_for('static', filename='images/open_mail.png')}}" class="img">
+                        <h2>Application is viewed</h2>
+                        <p>We have taken your form into consideration. You might recieve our calls or visits for clarification. Pls cooperate.</p>
+                    </div>
+
+                    <div class="col mx-1 status" id="verify">
+                        <img src="{{ url_for('static', filename='images/checking.png')}}" class="img">
+                        <h2>Application is verified</h2>
+                        <p>Your form is verified and further details will be delivered to you soon.</p>
+                    </div>
+
+                    <div class="col mx-1 status" id="register">
+                        <img src="{{ url_for('static', filename='images/register2.png')}}" class="img">
+                        <h2>Complaint registered</h2>
+                        <p>An official complaint has been registered. Details regarding the court proceedings will delivered soon.</p>
+                    </div>
+
+                    <div class="col mx-1 status" id="case_close">
+                        <img src="{{ url_for('static', filename='images/case_closed.png')}}" class="img">
+                        <h2>Case is closed</h2>
+                        <p>Case is closed and the justice has been delivered with respect of the court order</p>
+                    </div>
+
+                </div>
+                <div id="progress">
+                    <div id="label">
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js') }}">
+        </script>
+        <script src=
+
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+
+  </script>
+    <script>
+        $(function(){
+    
+   /* $("#online_form").css({
+        'opacity' : '1'
+    });*/
+    
+    
+    
+    var progress = '{{details.status}}';
+            
+    var num_pro = 0;
+    
+    if(progress=="form"){  //if the form is submitted
+        view("#online_form");
+        num_pro=19;
+    }else if(progress=="viewed"){
+        view("#online_form");
+        view("#view");
+        num_pro=39;
+    }else if(progress=="verified"){
+        view("#online_form");
+        view("#view");
+        view("#verify");
+        num_pro=59;
+    }else if(progress=="registered"){
+        view("#online_form");
+        view("#view");
+        view("#verify");
+        view("#register");
+        num_pro=79;
+    }else if(progress=="case_closed"){
+        view("#online_form");
+        view("#view");
+        view("#verify");
+        view("#register");
+        view("#case_close");
+        num_pro=99;
+    }
+    
+    $("#progress").progressbar({
+                   value: 0
+               });
+    var x =0;
+    
+        $("#label").text("In progress ....");
+                    
+        setTimeout(function(){
+        var progress = setInterval(function(){
+            x++;
+            $("#label").text(x+ "%");
+            $("#progress").progressbar("option","value",x);
+            if(x>num_pro){
+                clearInterval(progress);
+            }
+        },100);
+        },1000);
+    
+    
+    function view(y){
+       $(y).css("opacity","1");
+    };
+});
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPOE html>
+<html lang= "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>View the complaints</title>
+        <link href="{{url_for('static', filename= 'css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename= 'css/view_complaint_styling.css')}}" rel="stylesheet">
+        <style>
+            #deviceSize{
+                margin-bottom: 30px;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="header">
+                <div id="pghead">
+                    Virtual Police Station
+                </div>
+                <div id="searchbox">
+                    <form method="get">
+                        <input id="search" type="text">
+                        <input id="submit" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+         <!-- create nv bar-->
+        <nav role="navigation"class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Citizen corner</a></li>
+                        <li><a href="#">Police Corner</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        
+        <div class="container-fluid">
+            <ul class="nav nav-tabs nav-justified" id="navigation">
+                <li role="presentation" class="active"><a href="#unseen_complaints" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Unseen Complaints
+                    <span class="badge" id="unseen_not">
+                        
+                    </span></a></li>
+                <li role="presentation"><a href="#seen_complaints" data-toggle="tab"><span class="glyphicon glyphicon-folder-open"></span> Seen Complaints </a></li>
+                <li role="presentation"><a href="#filed_complaints" data-toggle="tab"><span class="glyphicon glyphicon-book"></span> Verified Complains </a></li>
+                <li role="presentation"><a href="#closed_files" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Case closed down details</a></li>
+            </ul>
+            
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in com active" id="unseen_complaints">
+                    <h1>Unseen Complaints</h1>
+                    <h2>Central Delhi/ New Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110002', '110020', '110055', '110005', '110001', '110008', '110003', '110011', '110012', '110060', '110004', '110069'])  and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Northern Delhi/ North-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110006', '110007', '110084', '110054', '110084', '110033', '110036', '110034', '110052', '110039', '110042', '110040', '110039', 110086, '110081', '110009', '110035', '110088', '110034', '110085', '110089'])  and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110025', '110062', '110019', '110003', '110024', '110044', '110020', '110017', '110019', '110013', '110024', '110065', '110049', '110048', '110014', '110044', '110025',' 110076' ])  and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110010', '110038', '110075', '110021', '110029', '110047', '110030', '110071', '110073', '110028', '110077', '110061', '110074', '110072', '110016', '110067', '110078', '110043', '110023', '110037', '110070', '110064', '110028', '110046', '110045', '110022', '110066', '110038', '110057']) and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>East Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110092', '110051', '110032', '110053', '110091', '110094', '110095', '110031', '110096', '110053', '110094', '110051', '110092', '110093']) and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>West Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'form') and (complaint.pincode in ['110058', '110018', '110026', '110015', '110059', '110064', '110027', '110063', '110087', '110041']) and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Late Complaints</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'form') and complaint.days>15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    
+                </div>
+                
+              
+                <div class="tab-pane fade" id="seen_complaints">
+                    <h1>Seen Complaints</h1>
+                    <h2>Central Delhi/ New Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110002', '110020', '110055', '110005', '110001', '110008', '110003', '110011', '110012', '110060', '110004', '110069']) and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Northern Delhi/ North-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110006', '110007', '110084', '110054', '110084', '110033', '110036', '110034', '110052', '110039', '110042', '110040', '110039', 110086, '110081', '110009', '110035', '110088', '110034', '110085', '110089'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110025', '110062', '110019', '110003', '110024', '110044', '110020', '110017', '110019', '110013', '110024', '110065', '110049', '110048', '110014', '110044', '110025',' 110076' ])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110010', '110038', '110075', '110021', '110029', '110047', '110030', '110071', '110073', '110028', '110077', '110061', '110074', '110072', '110016', '110067', '110078', '110043', '110023', '110037', '110070', '110064', '110028', '110046', '110045', '110022', '110066', '110038', '110057'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>East Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110092', '110051', '110032', '110053', '110091', '110094', '110095', '110031', '110096', '110053', '110094', '110051', '110092', '110093'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>West Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'viewed') and (complaint.pincode in ['110058', '110018', '110026', '110015', '110059', '110064', '110027', '110063', '110087', '110041'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Late Complaints</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'viewed') and complaint.days>15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    
+                </div>
+                
+                <div class="tab-pane fade" id="filed_complaints"> 
+                    <h1> Verified Complaints</h1>
+                   <h2>Central Delhi/ New Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110002', '110020', '110055', '110005', '110001', '110008', '110003', '110011', '110012', '110060', '110004', '110069'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Northern Delhi/ North-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110006', '110007', '110084', '110054', '110084', '110033', '110036', '110034', '110052', '110039', '110042', '110040', '110039', 110086, '110081', '110009', '110035', '110088', '110034', '110085', '110089'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110025', '110062', '110019', '110003', '110024', '110044', '110020', '110017', '110019', '110013', '110024', '110065', '110049', '110048', '110014', '110044', '110025',' 110076' ])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110010', '110038', '110075', '110021', '110029', '110047', '110030', '110071', '110073', '110028', '110077', '110061', '110074', '110072', '110016', '110067', '110078', '110043', '110023', '110037', '110070', '110064', '110028', '110046', '110045', '110022', '110066', '110038', '110057'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>East Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110092', '110051', '110032', '110053', '110091', '110094', '110095', '110031', '110096', '110053', '110094', '110051', '110092', '110093'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>West Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if (complaint.status == 'verified') and (complaint.pincode in ['110058', '110018', '110026', '110015', '110059', '110064', '110027', '110063', '110087', '110041'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Late Complaints</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if (complaint.status == 'verified') and complaint.days>15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                </div>
+                
+                <div class="tab-pane fade" id="closed_files"> 
+                    <h1>Case-Closed Complaints</h1>
+                   <h2>Central Delhi/ New Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110002', '110020', '110055', '110005', '110001', '110008', '110003', '110011', '110012', '110060', '110004', '110069'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Northern Delhi/ North-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110006', '110007', '110084', '110054', '110084', '110033', '110036', '110034', '110052', '110039', '110042', '110040', '110039', 110086, '110081', '110009', '110035', '110088', '110034', '110085', '110089'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110025', '110062', '110019', '110003', '110024', '110044', '110020', '110017', '110019', '110013', '110024', '110065', '110049', '110048', '110014', '110044', '110025',' 110076' ])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>South-Western Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110010', '110038', '110075', '110021', '110029', '110047', '110030', '110071', '110073', '110028', '110077', '110061', '110074', '110072', '110016', '110067', '110078', '110043', '110023', '110037', '110070', '110064', '110028', '110046', '110045', '110022', '110066', '110038', '110057'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>East Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110092', '110051', '110032', '110053', '110091', '110094', '110095', '110031', '110096', '110053', '110094', '110051', '110092', '110093'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>West Delhi</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and (complaint.pincode in ['110058', '110018', '110026', '110015', '110059', '110064', '110027', '110063', '110087', '110041'])and complaint.days<15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                    <h2>Late Complaints</h2>
+                    <form action="/view_complaint" method="POST">
+                        {% for complaint in complaints %}
+                       
+                        {% if ((complaint.status == 'case_closed') or (complaint.status == 'registered')) and complaint.days>15 %}
+                      <p> <button type="submit" class="btn btn-warning" name="view" value="{{complaint.id}}">{{complaint.id}} : {{complaint.name}},{{complaint.pincode}}, {{complaint.date}}</button></p> 
+                        {% endif %}
+                    {% endfor %}
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+        </script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js') }}">
+        </script>
+        <script>
+            $(function(){
+                var notification =0;
+                {% for complaint in complaints %}
+                        {% if complaint.status == 'form' %}
+                            notification=notification+1;
+                        {% endif %}
+                    {% endfor %}
+                $("#unseen_not").html(notification);
+            });
+        </script>
+    </body>
+</html>

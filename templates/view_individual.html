@@ -1,0 +1,146 @@
+<!DOCTYPOE html>
+<html lang= "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>View the complaints</title>
+        <link href="{{url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{url_for('static', filename= 'css/view_individual_styling.css') }}" rel="stylesheet">
+        <style>
+            #deviceSize{
+                margin-bottom: 30px;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="header">
+                <div id="pghead">
+                    Virtual Police Station
+                </div>
+                <div id="searchbox">
+                    <form method="get">
+                        <input id="search" type="text">
+                        <input id="submit" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+         <!-- create nv bar-->
+        <nav role="navigation"class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Citizen corner</a></li>
+                        <li><a href="#">Police Corner</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div id="complaint">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Name: <span class="details">{{details.name}}</span></p>
+                       {% if details.type=='car' %} 
+                            <p>Vehicle Description: <span class="details">{{details.v_des}}</span></p>
+                            <p>Vehicle Number: <span class="details">{{details.v_no}}</span></p>
+                            <p>Vehicle Last seen: <span class="details">{{details.v_ls_place}}</span></p>
+                            <p>Vehicle Last seen Pincode: <span class="details">{{details.pincode}}</span></p>
+                            <p>Vehicle Missing Since: <span class="details">{{details.v_ls_date}}</span></p>
+                            
+                       {% elif details.type=='missing' %}   
+                            <p>Name of missing person: <span class="details">{{details.name_missing}}</span></p>
+                            <p>Age of missing person: <span class="details">{{details.age}}</span></p>
+                            <p>Missing since: <span class="details">{{details.date}}, {{details.time}}</span></p>
+                            <p>Last seen at: <span class="details">{{details.lastseen}}</span></p>
+                            <p>Last seen Pincode: <span class="details">{{details.pincode}}</span></p>
+                        {% else %}
+                            <p>Complaint No: <span class="details">{{details.id}}</span></p>
+                            <p>Place: <span class="details">{{details.place}}</span></p>
+                            <p>Pincode: <span class="details">{{details.pincode}}</span></p>
+                            <p>Date: <span class="details">{{details.date}}</span></p>
+                            <p>Time: <span class="details">{{details.time}}</span></p>
+                            <p>Type of Crime: <span class="details">{{details.type_crime}}</span></p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <p>Personal Details: <span class="details">{{details.person_detail}}</span></p>
+                        <p>Other Details: <span class="details">{{details.other_detail}}</span></p>
+                        <p>Date of complaint: <span class="details">{{details.date_complaint}}</span></p>
+                        <p>Contact Details: <span class="details">{{details.phone}}</span></p>
+                        <p>Witness: <span class="details">{{details.witness}}</span></p>
+                    </div>
+                    <div class="col-xs-12">
+                        <center><img src="{{url_for('static', filename= 'images/'+details.img_name) }}" id="pic" height="auto" width="40%" ></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="/view" method="POST">
+            <input type="button" id="print" class="btn btn-warning" name="btn" value="Print" onclick="window.print()"/>
+            <button type="submit" id="verify" name="btn" value="verify" class="btn btn-warning">Verified</button>
+            <button type="submit" id="register" name="btn" value="register" class="btn btn-warning">Register</button>
+            <button type="submit" id="case_close" name="btn" value="case_close" class="btn btn-warning">Case-closed</button>
+            <input class="sr-only" name="id_form" value="{{details.id}}">
+        </form>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+        </script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js')}}">
+        </script>
+        <script>
+            $(function(){
+                var status="seen";
+                $("#verify").click(function(){
+                    window.alert("Are you sure you want to proceed?");
+                    status="verified";
+                });
+                $("#register").click(function(){
+                    window.alert("Are you sure you want to proceed?");
+                    status="registered";
+                });
+                $("#case_close").click(function(){
+                    window.alert("Are you sure you want to proceed?");
+                    status="case_closed";
+                });
+                
+                {% if details.status == 'viewed' %}
+                    hideshowButtons("#verify");
+                 
+                 {% elif details.status == 'verified' %}
+                    hideshowButtons("#register");
+                  
+                  {% else %}
+                    hideshowButtons("#case_close")
+                   {% endif %}
+                
+                
+                function hideshowButtons(y){
+                $(".btn").hide();
+               
+                $(y).show();
+    }
+            });
+        </script>
+    </body>
+</html>

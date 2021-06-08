@@ -1,0 +1,87 @@
+<!DOCTYPOE html>
+<html lang= "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Virtual Police Station</title>
+        <link href="{{url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{url_for('static', filename= 'css/index_styling.css') }}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+        <style>
+            #deviceSize{
+                margin-bottom: 30px;
+            }
+           
+        </style>
+    </head>
+    <body data-spy="scroll" data-target="#mynavbar">
+        <!--Add video to body element-->
+        <video autoplay loop muted id="bgvideo">
+            <source src="{{ url_for('static', filename='images/mumbai1.mp4') }}" type="video/mp4">
+        </video>
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <div>
+                    <h1>Virtual Police Station</h1>
+                </div>
+            </div>
+        </div>
+        <div id="login">
+            <div id="container">
+                
+               <div class="row">
+                   
+                    <div id="police" class="col-xs-6 log">
+                        <img src="{{ url_for('static', filename='images/police.png') }}" class="icon">
+                <p><a href="#">Click here to Login as Police</a></p>
+                
+                   </div>
+                    
+                    <div id="citizen" class="col-xs-6 log">
+                        <img src="{{ url_for('static', filename='images/customer1.png') }}" class="icon">
+                <p><a href="#">Click here as Citizen</a></p>
+                   </div>
+                </div>
+                
+                <div class="row">
+                    <div id="police_login">
+                        <form name="police_form" id="police_form" action="/" method="POST" novalidate>
+                        <p><label for="#username">Username</label>
+                        <input type="text" id="username"  name="username"></p>
+                        <p><label for="#password">Password</label>
+                        <input type="password" id="password"  name="password"></p>
+                            <button type="submit" class="btn" id="police_btn" value="police" name="login">Login</button>
+                        </form>
+                    </div>
+                    <div id="citizen_login">
+                        <form name="citizen_form" id="citizen_form" action="/" METHOD="POST" novalidate>
+                        <p><label for="#Aadharcardno">Adhar card No</label>
+                        <input type="text" id="Aadharcardno"  name="Aadharcardno"></p>
+                        <p><label for="#otpp">Enter the OTP</label>
+                        <input type="password" id="otpp"  name="otpp"></p>
+                        <!--<button type="submit" class="btn" id="otp_btn">Send OTP</button>-->
+                        <button type="submit" class="btn" id="citizen_btn" value="citizen" name="login">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+        </script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js') }}">
+        </script>
+       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js" integrity="sha512-JHVzEjx3zsh0SY+F9jc0VlW7VBXeDIJNXR0xcYySu1QLhf+Du8Zx9p28zP5MjIW7onsVy0qMsVls0YO6GTg2Aw==" crossorigin="anonymous"></script>-->
+            
+    <script src="{{url_for('static', filename= 'js/in_js.js') }}">
+        </script>
+        <script>
+            {% if credentials_incorrect==1 %}
+                window.alert("Incorrect Credentials!!");
+             {% endif %}
+        </script>
+    </body>
+</html>

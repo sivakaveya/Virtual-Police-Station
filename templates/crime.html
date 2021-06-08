@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Criminal Offence Complaint Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <link href="{{url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+      <style>
+        
+html, body {
+    color:white; 
+    background-color:black;
+      min-height: 100%;
+      }
+      
+body, div, form, input, p, #cal { 
+    color:white; 
+    background-color:black;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 22px;
+      }
+      
+h1 {
+    color: #8ebf42;
+      margin: 15px 0;
+      font-weight: 400;
+      }
+
+h4 {
+    color:white; 
+      margin-bottom: 4px;
+      }
+      
+.testbox {
+    color:lightgrey; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3px;
+      }
+      
+form ,#crime, #cal{
+    color:lightgrey; 
+    background-color:black;
+      width: 100%;
+      padding: 7.5px;
+      box-shadow: 0 2px 5px black; 
+      }
+      
+input, textarea ,#crime,  #cal{
+    color:white;
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      
+input ,#cal{
+    color:white;
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      
+input:hover, textarea:hover, {
+      outline: none;
+      border: 1px solid #095484;
+     
+      }
+      
+textarea {
+      margin-bottom: 3px;
+      }
+          #cal{
+              margin-left: 400px;
+              width: 150px
+          }
+      
+.item {
+    color:lightgrey; 
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+      }
+      
+input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+          
+input[type="time"]::-webkit-inner-spin-button {
+      margin: 2px 22px 0 0;
+      }
+      
+.item i, input[type="date"]::-webkit-calendar-picker-indicator {
+    color:lightgrey; 
+      position: absolute;
+      font-size: 20px;
+      }
+      
+.item i ,#crime{
+    color:white; 
+      left: 94%;
+      top: 30px;
+     z-index: 1;
+      }
+      
+[type="date"]::-webkit-calendar-picker-indicator {
+      left: 93%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      
+.street, .desired-outcome-item, .complaint-details-item, .persons-involved-item, .witnesses-item, .comments-item {
+    color:white; 
+      display: flex;
+      flex-wrap: wrap;
+      }
+      
+.street input {
+      margin-bottom: 10px;
+      }
+      
+small {
+      display: block;
+      line-height: 16px;
+      opacity: 0.7;
+      }
+      
+.btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+      
+button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: lightgrey;
+      font-size: 16px;
+      color: black;
+      cursor: pointer;
+      }
+           .btn{
+              margin: 10px auto;
+          }
+      
+button:hover {
+      background-color: #8ebf42;
+      }
+      @media (min-width: 568px) {
+      
+input {
+      width: calc(35% - 20px);
+      margin: 0 0 0 8px;
+      }
+      
+select {
+      width: calc(50% - 8px);
+      margin: 0 0 10px 8px;
+      }
+      
+.item {
+      flex-direction: row;
+      align-items: center;
+      }
+      
+.item p {
+      width: 30%;
+      }
+      
+.item i {
+      left: 61%;
+      top: 25%;
+      }
+      
+[type="date"]::-webkit-calendar-picker-indicator {
+      left: 60%;
+      }
+      
+.street, .desired-outcome-item, .complaint-details-item, .persons-involved-item, .witnesses-item, .comments-item {
+      width: 70%;
+      }
+      
+.street input {
+      width: calc(50% - 20px);
+      }
+      
+.street .street-item {
+      width: 100%;
+      }
+      
+.address p, .desired-outcome p, .complaint-details p, persons-involved-item, .witnesses-item, .comments-item {
+    color:white;
+      align-self: flex-start;
+      margin-top: 6px;
+      }
+      
+.desired-outcome-item, .complaint-details-item, persons-involved-item, witnesses-item, .comments-item {
+      margin-left: 6px;
+      }
+      
+textarea {
+    color:white;
+    background-color:black;
+      width: calc(100% - 6px);
+      }
+      }
+          
+          .immersive, .immersive1{
+              background-color: transparent;
+              width: 35px;
+              text-align: center;
+          }
+          .immersive1:hover{
+              background-color: transparent;
+          }
+           #crime1{
+    color: white;
+    background: black;
+          width: auto;
+}  
+    </style>
+  </head>
+  
+    
+    <body>
+    
+<div class="testbox">
+      <form action="/crime" method="POST" enctype="multipart/form-data">
+        <h1>Criminal Offence Complaint Form</h1>
+        <p>Please send us details about the incident you would like to report. Our Complaint Center will analyze your complaint and take the appropriate measures in order that the reported situation will be inspected and brought to justice.</p>
+        <hr/>
+        
+          <div class="item">
+              <p>Select Language</p>
+              <div>
+                        <select name="language" id="crime1">
+                            <option value="hi">1. Hindi</option>
+                            <option value="en">2. English</option>
+                            <option value="ta">3. Tamil</option>
+                            <option value="ml">4. Malayalam</option>
+                            <option value="gu">5. Gujurati</option>
+                            <option value="bn">6. Bengali</option>
+                            <option value="te">7. Telegu</option>
+                            <option value="kn">8. Kannada</option>
+                            <option value="ur">9. Urdu</option>
+                            <option value="mr">10. Marathi</option>
+                        </select>
+                    </div>
+            <button name="lang" value="lang">Select the language</button>
+          </div>
+    <div class="item">
+          <p>Name of complainant<button class="immersive" name="immersive" value="Name of complainant"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <input type="text" name="name"><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+        
+          <div class="item">
+          <p>Contact no.<button class="immersive" name="immersive" value="Phone number"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <input type="text" name="phone"><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+    
+    <div class="item address">
+          <p>Incident Area<button class="immersive" name="immersive" value="Address of the incident"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <div class="street">
+            <input class="street-item" type="text" name="place" placeholder="Street area" /><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          </div>
+        <div class="street">
+            <input class="street-item" type="text" name="pincode" placeholder="Pincode" /><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          </div>
+        
+          </div>
+          <div class="item">
+              <p>Type of Criminal Offence<button class="immersive" name="immersive" value="Type of the criminal offence"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+              <div>
+                        <select name="type_crime" id="crime">
+                            <option value="Theft">Theft </option>
+                            <option value="Extortion">Extortion(Threatening)</option>
+                            <option value="Robbery">Robbery</option>
+                            <option value="Adultry">Adultry</option>
+                            <option value="Trespass">Trespass to land</option>
+                            <option value="Murder">Culpable Homicide/Murder</option>
+                            <option value="Kidnap">Kidnap/Abduction</option>
+                            <option value="Attempt">Attempt</option>
+                            <option value="Cheating">Cheating</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+          </div>
+          <div class="form-group item">
+                  <label class="control-label">Last seen</label>
+                  <div class='input-group date' id='datetimepicker1'>
+                     <input type='text' class="form-control" id="cal" name="date" />
+                     <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                  </div>
+               </div>
+ <!--   <div class="item">
+          <p>Date of the reported incident<button class="immersive" name="immersive" value="Date of incident"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <input type="date" name="date" required/><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+          
+    <div class="item">
+          <p>Time of Incident:<button class="immersive" name="immersive" value="Time of incident"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <input type="time" name="time" required/><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          <i class="fas fa-clock"></i>
+        </div>-->
+          
+    <div class="item persons-involved">
+          <p>The person(s) involved in this complaint are<button class="immersive" name="immersive" value="Description of the persons involved"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+        <div class="persons-involved-item">
+          <textarea rows="5" placeholder="Mention Victims/Accused separately here" name="person_detail"></textarea><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+          </div>
+        
+    <div class="item complaint-details">
+          <p>Complaint details<button class="immersive" name="immersive" value="Complaint details"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+          <div class="complaint-details-item">
+            <textarea rows="5" placeholder="Note all relevant dates, places, events, etc. pertaining to the complaint" name="other_detail"></textarea><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          </div>
+        </div>
+        
+   
+          
+    <div class="item witnesses">
+          <p>Witness(es), if available:<button class="immersive" name="immersive" value="Witness of the details if available"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></p>
+        <div class="witnesses-item">
+          <textarea rows="5" placeholder="Name - Mobile No. (*email*)" name="witness"></textarea><button class="immersive1"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+    </div>
+           <div class="item">
+                    <label for="inputFile">Any img/pdf (only pdf/png/jpg is allowed)<button class="immersive" name="immersive" value="Upload an image for reference"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test"></button></label>
+                    <input type="file" name="img">
+          </div>
+        
+
+        <small>By registering you declare that all information you have entered is truthful and accurate.</small>
+        <div class="btn-block">
+        <button type="submit" id="btn" name="submit" value="submit">Register Complaint</button>
+        </div>
+      </form>
+    </div>
+        <div>
+            <center><input type="button" id="print" class="btn btn-success" name="btn" value="Print" onclick="window.print()"/></center>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+        <script>
+          $(function () {
+            $('#datetimepicker1').datetimepicker();
+         });
+        </script>
+        <script>
+            $(function(){
+                $("#btn").click(function(){
+                    window.alert("Are you sure you want to proceed?")
+                    window.alert("The complaint is sent. You will be contacted soon. To see the status of your complaint click on status in home page.")
+                });
+            });
+             
+           
+        </script>
+  </body>
+</html>

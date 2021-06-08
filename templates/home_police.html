@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Virtual Police Station</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <link rel="stylesheet" href="{{url_for('static', filename= 'css/frontstyle.css') }}">
+    </head>
+    <body>
+       
+        
+        <div id="container">
+            <div id="header">
+                <div id="pghead">
+                    Virtual Police Station
+                </div>
+                <div id="searchbox">
+                    <form method="get">
+                        <input id="search" type="text">
+                        <input id="submit" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a>
+                        <ul>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Initiatives</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Citizen Corner</a>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Sign up</a></li>
+                            <li><a href="#">Report</a></li>
+                            <li><a href="#">Permission</a></li>
+                            <li><a href="#">Passport Status</a></li>
+                            <li><a href="#">DCP Visit</a>
+                            </li>
+                            <li><a href="#">Right Information</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Police corner</a>
+                        <ul>
+                            <li><a href="#">Police Meetings</a></li>
+                            <li><a href="#">Case Details</a></li>
+                            <li><a href="#">Good Work</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact us</a>
+                        <ul>
+                            <li><a href="#">Emergency Contact</a></li>
+                            <li><a href="#">Police station in charge</a></li>
+                        </ul>
+                    </li>
+                    <li id="lilast"><a href="#">Status</a></li>
+                </ul>
+            </div>
+            <div id = "introduction">
+                <h3>Your Safety, Our Responsibility</h3>
+                <p>Taking stock of your security round the clock! Dial 100 in case of any emergency. Help us to help you.
+                Mumbai Police shall ensure the Rule of Law, enforce the law of the land impartially and firmly without fear or favour, and strive to create a fear free environment that is conducive to growth and development.
+                    Mumbai Police will remain committed to maintaining public order, preventing and detecting crime, maintaining and promoting communal harmony, ensuring a smooth flow of traffic, and taking strong action against terrorism, organized crime, anti-social / illicit activities / elements.</p>
+                
+            </div>
+            
+            <form action="/home_police" method="POST">
+            <div id="category">
+               
+                <div id="car">
+                    <button name="form_name" value="car" class="btn"><a href="#"><img src="{{ url_for('static', filename='images/stolen_car.png')}}">
+                    <p>Vehicle Stolen/Unidentified vehicles</p></a></button>
+                </div>
+                <div id="accident">
+                    <button name="form_name" value="accident" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/traffic-accident-removebg-preview.png')}}">
+                    <p>Report a Road Accident</p></a></button>
+                </div>
+                <div id="Woman">
+                    <button name="form_name" value="woman" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/woman.png')}}">
+                    <p>Crime Against Woman</p></a></button>
+                </div>
+                
+                <div id="cyber">
+                    <button name="form_name" value="cyber" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/cyber-attack.png')}}">
+                    <p>Cyber Crime</p></a></button>
+                </div>
+                <div id="civil">
+                    <button name="form_name" value="civil" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/civil_complaint.png')}}">
+                    <p>Civil Wrongs</p></a></button>
+                </div>
+                <div id="crime">
+                    <button name="form_name" value="crime" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/criminal-posing-for-police-picture.png')}}">
+                    <p>Criminal Offence</p></a></button>
+                </div>
+                
+                <div id="evidence">
+                    <button name="form_name" value="common" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/permission.png')}}">
+                    <p>Common Form</p></a></button>
+                </div>
+                <div id="missing">
+                    <button name="form_name" value="missing" class="btn"><a href="view_complaint.html"><img src="{{ url_for('static', filename='images/missing_person.png')}}">
+                    <p>Report a Missing Person</p></a></button>
+                </div>
+            </div>
+            </form>
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            {% if login==1 %}
+                window.alert("Logged in successfully")
+             {% endif %}
+             
+           
+        </script>
+    </body>
+</html>

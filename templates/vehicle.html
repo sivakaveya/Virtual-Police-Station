@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vehicle Missing/Stolen form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <link href="{{url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+      <style>
+        
+html, body {
+    color:white; 
+    background-color:black;
+      min-height: 100%;
+      }
+      
+body, div, form, input, p { 
+    color:lightgrey; 
+    background-color:black;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 22px;
+      }
+      
+h1 {
+    color: #8ebf42;
+      margin: 15px 0;
+      font-weight: 400;
+      }
+           .btn{
+              margin: 10px auto;
+          }
+
+h4 {
+    color:white; 
+      margin-bottom: 4px;
+      }
+      
+.testbox {
+    color:lightgrey; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3px;
+      }
+      
+form, #cal{
+    color:lightgrey; 
+    background-color:black;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 2px 5px black; 
+      }
+      
+input, textarea, #cal { 
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      
+input ,#cal{
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+          #cal{
+              margin-left: 400px;
+              width: 150px
+          }
+      
+      
+textarea {
+      margin-bottom: 3px;
+      }
+      
+.item {
+    color:lightgrey; 
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+      }
+      
+input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+          
+input[type="time"]::-webkit-inner-spin-button {
+      margin: 2px 22px 0 0;
+      }
+      
+.item i, input[type="date"]::-webkit-calendar-picker-indicator {
+    color:lightgrey; 
+      position: absolute;
+      font-size: 20px;
+      }
+      
+.item i {
+    color:white; 
+      left: 94%;
+      top: 30px;
+     z-index: 1;
+      }
+      
+[type="date"]::-webkit-calendar-picker-indicator {
+      left: 93%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      
+ .street, .street input, .desired-outcome-item, .complaint-details-item {
+    color:white; 
+      display: flex;
+      flex-wrap: wrap;
+      }
+      
+
+      
+small {
+      display: block;
+      line-height: 16px;
+      opacity: 0.7;
+      }
+      
+.btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+      
+button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: lightgrey;
+      font-size: 16px;
+      color: black;
+      cursor: pointer;
+      }
+      
+button:hover {
+      background-color: #8ebf42;
+      }
+      @media (min-width: 568px) {
+      
+input , #cal{
+      width: calc(35% - 20px);
+      margin: 0 0 0 8px;
+      }
+      
+select {
+      width: calc(50% - 8px);
+      margin: 0 0 10px 8px;
+      }
+      
+.item {
+      flex-direction: row;
+      align-items: center;
+      }
+      
+.item p {
+      width: 30%;
+      }
+      #crime{
+    color: white;
+    background: black;
+          width: auto;
+}
+.item i {
+      left: 61%;
+      top: 25%;
+      }
+      
+[type="date"]::-webkit-calendar-picker-indicator {
+      left: 60%;
+      }
+      
+.desired-outcome-item, .complaint-details-item, .persons-involved-item, .witnesses-item, .comments-item {
+      width: 100%;
+      }
+      
+          .street{
+              width: 70%;
+          }
+.street input {
+      width: calc(50% - 20px);
+      }
+      
+.street .street-item {
+      width: 70%;
+      }
+          #cal{
+              width: 200px;
+              margin-left: 273px
+          }
+.address p, .desired-outcome p, .complaint-details p,persons-involved-item, witnesses-item, .comments-item {
+      align-self: flex-start;
+      margin-top: 10px;
+      }
+      
+.desired-outcome-item, persons-involved-item, witnesses-item, .comments-item {
+      margin-left: 6px;
+      }
+          
+          .complaint-details-item{
+              margin-left: -10px;
+          }
+          .immersive, .immersive1{
+              background-color: transparent;
+              width: 35px;
+              text-align: center;
+          }
+          .immersive1:hover{
+              background-color: transparent;
+          }
+          
+      
+textarea {
+    background-color:black;
+      width: calc(100% - 6px);
+    color: white;
+      }
+      }
+    </style>
+  </head>
+  
+    
+    <body>
+    
+<div class="testbox">
+      <form action="/car_missing" method="POST" enctype="multipart/form-data">
+        <h1>Vehicle Missing/Stolen</h1>
+        <p>Please send us details about the incident and your vehicle you would like to report. Our Complaint Center will analyze your complaint and take the appropriate measures in order that the reported situation will be inspected and brought to justice.</p>
+        <hr/>
+          
+        <div class="item">
+              <p>Select Language</p>
+              <div>
+                        <select name="language" id="crime">
+                            <option value="hi">1. Hindi</option>
+                            <option value="en">2. English</option>
+                            <option value="ta">3. Tamil</option>
+                            <option value="ml">4. Malayalam</option>
+                            <option value="gu">5. Gujurati</option>
+                            <option value="bn">6. Bengali</option>
+                            <option value="te">7. Telegu</option>
+                            <option value="kn">8. Kannada</option>
+                            <option value="ur">9. Urdu</option>
+                            <option value="mr">10. Marathi</option>
+                        </select>
+                    </div>
+            <button name="lang" value="lang">Select the language</button>
+          </div>
+   
+          
+    <div class="item">
+          <p>Name of Owner <button class="immersive" name="immersive" value="Name of owner"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px" id="test">
+              </button></p>
+        <input type="text" name="name" placeholder="Last Name - First Name" value={{name}}><button class="immersive1" name="mic" value="name"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+          
+            <div class="item">
+          <p>Contact no <button class="immersive" name="immersive" value="Phone number"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <input type="text" name="phone" value="{{phone}}">
+        </div>
+          
+           <div class="item">
+          <p>Vehicle description<button class="immersive" name="immersive" value="Vehicle description"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <input type="text" name="v_des" placeholder="Color, Manufacturer, Model" value={{des}}><button class="immersive1" name="mic" value="des"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+        
+           <div class="item">
+          <p>Licence plate no.<button class="immersive" name="immersive" value="Liscence plate number"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <input type="text" name="v_no" value="{{v_no}}">
+        </div>
+        
+    <div class="item address">
+          <p>Vehicle last spotted at<button class="immersive" name="immersive" value="Vehicle last spotted at"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <input type="text" name="v_ls_place" placeholder="Exact spot eg: outside shop x" value="{{v_ls_place}}">
+        <div class="street">
+            <input type="text" name="pincode" placeholder="Pincode" value="{{pincode}}"><button class="immersive1" name="mic" value="v_ls_place"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          </div>
+        </div>
+          <div class="form-group item">
+                  <label class="control-label">Last seen</label>
+                  <div class='input-group date' id='datetimepicker1'>
+                     <input type='text' class="form-control" id="cal" name="v_ls_date" value="{{date}}">
+                     <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                  </div>
+               </div>
+          
+        <!--  <div class="item">
+          <p>Missing since? <button class="immersive"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <input type="date" name="v_ls_date" required/>
+          <i class="fas fa-calendar-alt"></i>
+        </div>  -->
+    <div class="item">
+          <p>Description of persons involved, if any <button class="immersive" name="immersive" value="Description of the persons involved"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <textarea rows="5" placeholder="Clothing/facial features etc" name="person_detail" value="{{des_per}}"></textarea><button class="immersive1" name="mic" value="des_per"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+        </div>
+        
+    <div class="item complaint-details">
+          <p>Complaint details <button class="immersive" name="immersive" value="Complaint details"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></p>
+          <div class="complaint-details-item">
+            <textarea rows="5" placeholder="Note all relevant dates, places, events, etc. pertaining to the complaint" name="other_detail" value={{des_other}}></textarea><button class="immersive1" name="mic" value="des_other"><img src="{{url_for('static', filename= 'images/microphone_ori.png') }}" width="28px" height="28px"></button>
+          </div>
+        </div>
+          <div class="item">
+                    <label for="inputFile">Any img/pdf (only pdf/png/jpg is allowed) <button class="immersive" name="immersive" value="Upload an image for reference"><img src="{{url_for('static', filename= 'images/volume.png') }}" width="24px" height="24px"></button></label>
+                    <input type="file" name="img">
+          </div>
+        
+
+        <small>By registering you declare that all information you have entered is truthful and accurate.</small>
+        <div class="btn-block">
+          <button type="submit" id="btn" value="submit" name="submit">Register Complaint</button>
+        </div>
+      </form>
+    </div>
+        <div>
+           <center> <input type="button" id="print" class="btn btn-success" name="btn" value="Print" onclick="window.print()"/></center>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{url_for('static', filename= 'js/bootstrap.min.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+        <script>
+          $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'YYYY-MM-DD hh:mm a'
+            });
+         });
+        </script>
+        <script>
+            
+            $(function(){
+                var hear = false;
+                $("#btn").click(function(){
+                    window.alert("Are you sure you want to proceed?")
+                    window.alert("The complaint is sent. You will be contacted soon. To see the status of your complaint click on status in home page.");
+                });
+                $(".immersive1").click(function(){
+                    if(hear==false)
+                        {
+                            hear = true;
+                            setInterval(function(){
+                                $(this).html("<img src='{{url_for('static', filename= 'images/microphone_mid.png') }}' width='28px' height='28px'>");
+                                setTimeout($(this).html("<img src='{{url_for('static', filename= 'images/microphone.png') }}' width='28px' height='28px'>"),1000);
+                                setTimeout($(this).html("<img src='{{url_for('static', filename= 'images/microphone_ori.png') }}' width='28px' height='28px'>"),1000);
+                            },3000);
+                        }
+                })
+               
+            });
+             
+           
+        </script>
+  </body>
+</html>
